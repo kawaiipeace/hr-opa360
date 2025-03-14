@@ -19,6 +19,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Editor from '@/components/editor';
 const BasicWizard = () => {
   const [rating_1_1_1, setRating_1_1_1] = useState<number>(0);
   const [rating_1_1_2, setRating_1_1_2] = useState<number>(0);
@@ -105,7 +106,7 @@ const BasicWizard = () => {
 
   const [activeStep, setActiveStep] = React.useState<number>(0);
 
-  const steps = ["ส่วนที่ 1", "ส่วนที่ 2", "ส่วนที่ 3", "ยืนยันการสมัคร"];
+  const steps = ["ส่วนที่ 1", "ส่วนที่ 2", "ส่วนที่ 3"];
 
   const isStepOptional = (step: number) => {
     return step === 1;
@@ -342,11 +343,12 @@ const BasicWizard = () => {
                           <div className="grid grid-cols-12 gap-4">
                             <div className="col-span-12 lg:col-span-12">
                               <p className="mt-1 text-lg text-default-700 font-bold">
-                                2.1 ระดับ Communication Skill (ทักษะการสื่อสาร)</p>
+                                3.1 ระดับ Delegation (การมอบหมายงาน)
+                              </p>
                             </div>
                             <div className="mb-3 col-span-12 lg:col-span-12">
                               <p className="mb-1 text-base text-default-700 font-medium">
-                                2.1.1 ความชัดเจนและตรงประเด็นในการสื่อสารสามารถถ่ายทอดข้อมูลได้ชัดเจน เข้าใจง่าย เน้นสาระสำคัญและจุดเด่น พร้อมใช้เทคนิคที่ช่วยให้เรื่องซับซ้อนเข้าใจง่าย
+                                3.1.1 การเลือกผู้รับมอบหมายที่เหมาะสมวิเคราะห์ความสามารถของสมาชิกในและนอกทีมได้แม่นยำ และเลือกผู้รับมอบหมายให้ตรงกับความเชี่ยวชาญและศักยภาพของบุคคล
                               </p>
                               <Rating
                                 className="gap-x-1.5 max-w-[225px]"
@@ -356,26 +358,7 @@ const BasicWizard = () => {
                             </div>
                             <div className="mb-3 col-span-12 lg:col-span-12">
                               <p className="mb-1 text-base text-default-700 font-medium">
-                                2.1.2 การให้คำปรึกษาที่นำไปใช้แก้ปัญหาได้จริงให้คำปรึกษาตรงประเด็น พร้อมแนวทางที่ปฏิบัติได้จริงและแก้ปัญหาได้อย่างตรงจุด</p>
-                              <Rating
-                                className="gap-x-1.5 max-w-[225px]"
-                                value={rating_X}
-                                onChange={setRating_X}
-                              />
-                            </div>
-                            <div className="mb-3 col-span-12 lg:col-span-12">
-                              <p className="mb-1 text-base text-default-700  font-medium">
-                                2.1.3 การวางแผนงานและเป้าหมายในการสื่อสารกำหนดแผนและเป้าหมายการสื่อสารที่ชัดเจน และดำเนินการตามแผนอย่างมีประสิทธิภาพ
-                              </p>
-                              <Rating
-                                className="gap-x-1.5 max-w-[225px]"
-                                value={rating_X}
-                                onChange={setRating_X}
-                              />
-                            </div>
-                            <div className="mb-3 col-span-12 lg:col-span-12">
-                              <p className="mb-1 text-base text-default-700  font-medium">
-                                2.1.4 ความสามารถในการถ่ายทอดความรู้และการนำไปปฏิบัติถ่ายทอดความรู้ที่เป็นประโยชน์ต่อการทำงาน และสนับสนุนให้ผู้รับสารนำไปปรับใช้ได้จริง
+                                3.1.2 การกระจายงาน และความชัดเจนในการมอบหมายงานกระจายงานอย่างสมดุลทั้งในด้านปริมาณและความยากง่าย กำหนดขอบเขตความรับผิดชอบและเวลาที่ต้องส่งมอบอย่างเหมาะสม พร้อมอธิบายรายละเอียดงาน วัตถุประสงค์ และเป้าหมายให้ชัดเจน
                               </p>
                               <Rating
                                 className="gap-x-1.5 max-w-[225px]"
@@ -385,11 +368,13 @@ const BasicWizard = () => {
                             </div>
                             <div className="col-span-12 lg:col-span-12">
                               <p className="mt-1 text-lg text-default-700 font-bold">
-                                2.2 ระดับ Advising Skill (ทักษะการให้คำแนะนำ)</p>
+                                3.2 การจัดลำดับความสำคัญ (Prioritization)
+                              </p>
                             </div>
                             <div className="mb-3 col-span-12 lg:col-span-12">
                               <p className="mb-1 text-base text-default-700 font-medium">
-                                2.2.1 การให้คำแนะนำเชิงหลักการอธิบายแนวคิดและหลักการที่เกี่ยวข้องได้ชัดเจน พร้อมให้ข้อเสนอแนะที่ตรงประเด็นและสอดคล้องกับนโยบายขององค์กร
+                                3.2.1 การวิเคราะห์และจัดลำดับความสำคัญของงานอย่างเหมาะสม
+                                ระบุและวิเคราะห์งานที่สำคัญและเร่งด่วน เพื่อจัดลำดับความสำคัญได้เหมาะสม ประเมินและเลือกงานโดยพิจารณาความเชื่อมโยงระหว่างเป้าหมายระยะสั้นและระยะยาวขององค์กร
                               </p>
                               <Rating
                                 className="gap-x-1.5 max-w-[225px]"
@@ -399,8 +384,8 @@ const BasicWizard = () => {
                             </div>
                             <div className="mb-3 col-span-12 lg:col-span-12">
                               <p className="mb-1 text-base text-default-700 font-medium">
-                                2.2.2 การแก้ปัญหาเชิงสถานการณ์
-                                วิเคราะห์ปัญหาอย่างรอบคอบและเสนอวิธีแก้ไขที่เป็นไปได้จริง พร้อมมองเห็นทางเลือกหลากหลายในการแก้ไขปัญหา
+                                3.2.2 การวางแผนและจัดสรรทรัพยากรอย่างมีประสิทธิภาพ
+                                จัดสรรเวลา บุคลากร และทรัพยากรอื่น ๆ อย่างเหมาะสมและคุ้มค่า ตามลำดับความสำคัญของงาน สร้างแผนงานที่ยืดหยุ่นและสามารถปรับเปลี่ยนได้ตามสถานการณ์
                               </p>
                               <Rating
                                 className="gap-x-1.5 max-w-[225px]"
@@ -410,9 +395,8 @@ const BasicWizard = () => {
                             </div>
                             <div className="mb-3 col-span-12 lg:col-span-12">
                               <p className="mb-1 text-base text-default-700  font-medium">
-                                2.2.3 การสื่อสาร การสร้างความเข้าใจ และการทำงานเป็นทีม
-                                ใช้ภาษาที่เข้าใจง่ายและใช้ข้อมูลในการสนับสนุนการสื่อสารสร้างความเข้าใจและแลกเปลี่ยนความคิดเห็น สร้างบรรยากาศที่เปิดรับฟังความคิดเห็น และส่งเสริมความไว้วางใจในทีม
-                                ร่วมกำหนดเป้าหมายและแนวทางการทำงานที่ชัดเจน เพื่อสร้างความเข้าใจที่ตรงกันและสนับสนุนการทำงานร่วมกัน
+                                3.2.3 การสร้างความร่วมมือและเชื่อมโยงเครือข่ายในการทำงาน
+                                สร้างความสัมพันธ์ที่ดีในการทำงานร่วมกัน สนับสนุนการสื่อสารและแลกเปลี่ยนข้อมูลทั้งภายในและภายนอกทีม เพื่อความสำเร็จของงาน
                               </p>
                               <Rating
                                 className="gap-x-1.5 max-w-[225px]"
@@ -422,8 +406,66 @@ const BasicWizard = () => {
                             </div>
                             <div className="mb-3 col-span-12 lg:col-span-12">
                               <p className="mb-1 text-base text-default-700  font-medium">
-                                2.2.4 การติดตามผลและปรับปรุงคำแนะนำ
-                                ติดตามผลคำแนะนำและรับผิดชอบต่อผลลัพธ์ที่เกิดขึ้น เปิดรับฟังข้อเสนอแนะจากผู้ขอคำแนะนำเพื่อนำมาปรับปรุงและพัฒนาการให้คำปรึกษา
+                                3.2.4 การติดตามผลและปรับปรุงแผนงาน
+                                ติดตามความคืบหน้าของงานอย่างสม่ำเสมอ ระบุปัญหาหรือความเสี่ยงที่อาจเกิดขึ้น และปรับปรุงแผนงานให้เหมาะสมกับสถานการณ์ที่เปลี่ยนแปลง สื่อสารและประสานงานเพื่อการปรับแผนงานให้ตอบสนองต่อความเปลี่ยนแปลงในบริบทของงาน
+                              </p>
+                              <Rating
+                                className="gap-x-1.5 max-w-[225px]"
+                                value={rating_X}
+                                onChange={setRating_X}
+                              />
+                            </div>
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                      <AccordionItem value="item-4" className="dark:bg-slate-700">
+                        <AccordionTrigger>
+                          <div className="flex flex-col text-start text-xl">
+                            <div>4. พฤติกรรมสร้างนวัตกรรมในการทำงาน (Innovative Work Behavior)</div>
+                            <div className="text-xs mt-1 mb-2">
+                              ถ่ายทอดและผลักดันให้มีการนำความคิดใหม่ ๆ มาใช้ในหน่วยงานของตนเอง และ เสนอแนะแนวคิดให้กับหน่วยงานที่เกี่ยวข้องเพื่อให้สอดคล้องกับกลยุทธ์ขององค์กร
+                            </div>
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="grid grid-cols-12 gap-4">
+                            <div className="mb-3 col-span-12 lg:col-span-12">
+                              <p className="mb-1 text-base text-default-700 font-medium">
+                                4.1 การถ่ายทอดและผลักดันแนวคิดใหม่
+                                ถ่ายทอดแนวคิดใหม่ ๆ ให้ทีมงานหรือหน่วยงานอย่างชัดเจน และผลักดันให้แนวคิดนั้นถูกนำไปประยุกต์ใช้ในงานประจำ พร้อมเชื่อมโยงกับกลยุทธ์ขององค์กร
+                              </p>
+                              <Rating
+                                className="gap-x-1.5 max-w-[225px]"
+                                value={rating_X}
+                                onChange={setRating_X}
+                              />
+                            </div>
+                            <div className="mb-3 col-span-12 lg:col-span-12">
+                              <p className="mb-1 text-base text-default-700 font-medium">
+                                4.2 การวิเคราะห์และเชื่อมโยงเพื่อสร้างนวัตกรรม
+                                ใช้ความรู้และข้อมูลในการวิเคราะห์เพื่อพัฒนากระบวนการใหม่ที่มีประโยชน์ เชื่อมโยงการดำเนินงานกับแนวคิดนวัตกรรมเพื่อเพิ่มประสิทธิภาพและผลลัพธ์
+                              </p>
+                              <Rating
+                                className="gap-x-1.5 max-w-[225px]"
+                                value={rating_X}
+                                onChange={setRating_X}
+                              />
+                            </div>
+                            <div className="mb-3 col-span-12 lg:col-span-12">
+                              <p className="mb-1 text-base text-default-700 font-medium">
+                                4.3 การสร้างบรรยากาศที่เอื้อต่อการแลกเปลี่ยนเรียนรู้
+                                สนับสนุนบรรยากาศที่ส่งเสริมความร่วมมือและการแลกเปลี่ยนความคิดระหว่างบุคลากร และเปิดโอกาสให้ทุกคนมีส่วนร่วมในการนำเสนอและทดลองแนวคิดใหม่
+                              </p>
+                              <Rating
+                                className="gap-x-1.5 max-w-[225px]"
+                                value={rating_X}
+                                onChange={setRating_X}
+                              />
+                            </div>
+                            <div className="mb-3 col-span-12 lg:col-span-12">
+                              <p className="mb-1 text-base text-default-700 font-medium">
+                                4.4 การกระตุ้นความคิดสร้างสรรค์และการกล้าทำ
+                                กระตุ้นให้บุคลากรกล้าคิด กล้าทดลอง และสร้างสรรค์สิ่งใหม่ ๆ อย่างต่อเนื่อง พร้อมแสดงออกถึงการเป็นแบบอย่างในด้านการคิดเชิงนวัตกรรม
                               </p>
                               <Rating
                                 className="gap-x-1.5 max-w-[225px]"
@@ -435,97 +477,121 @@ const BasicWizard = () => {
                         </AccordionContent>
                       </AccordionItem>
                     </Accordion>
-                    <div className="flex flex-wrap gap-4 mb-7 items-center justify-between">
-                      <div className="text-xl font-medium text-default-800"></div>
-                    </div>
-
                   </div>
                 </>
               )}
               {activeStep === 1 && (
                 <>
-                  <div className="col-span-12 lg:col-span-6">
-                    <Label className="mb-3" htmlFor="inputId">วันที่ได้รับการบรรจุ</Label>
-                    <Input type="text" id="inputId" readOnly />
-                  </div>
-                  <div className="col-span-12 lg:col-span-6">
-                    <Label className="mb-3" htmlFor="inputId">อายุงาน (ปี) </Label>
-                    <Input type="text" id="inputId" readOnly />
-                  </div>
-                  <div className="col-span-12 lg:col-span-12">
-                    <p className="text-md text-white-600 dark:text-white-600 mt-3">
-                      ประวัติทางวินัย
-                    </p>
-                  </div>
-                  <div className="col-span-12 lg:col-span-12">
-                    <RadioGroup
-                      defaultValue="cr_1"
-                      onValueChange={handleValueChange}
-                    >
-                      <Label
-                        className={cn("flex justify-between items-center w-full border border-default-400 p-4 rounded-md",
-                          {
-                            "border-primary": selected === "cr_1"
-                          }
-                        )} htmlFor="cr_1"
-                      >
-                        <div>
-                          <h4 className="font-medium text-default-800 mb-1">ไม่เคยถูกลงโทษ ทั้งทางวินัยหรืออาญา (รับรอง)</h4>
-                          <span className="text-sm text-default-600">(ยกเว้นพ้นระยะเวลาการถูกลงโทษมาแล้วเกิน 5 ปี นับถึงวันประกาศโครงการฯ)</span>
-                        </div>
-                        <RadioGroupItem value="cr_1" id="cr_1" color="primary"></RadioGroupItem>
-                      </Label>
-                      <Label
-                        className={cn("flex  justify-between items-center w-full border border-default-400 p-4 rounded-md",
-                          {
-                            "border-destructive": selected === "cr_2"
-                          }
-                        )}
-                        htmlFor="cr_2">
-                        <div>
-                          <h4 className="font-medium text-default-800 mb-1">เคยถูกลงโทษ ทั้งทางวินัยหรืออาญา (ไม่รับรอง)</h4>
-                          <span className="text-sm text-default-600">(พ้นระยะเวลาถูกลงโทษไม่ถึง 5 ปี นับถึงวันประกาศโครงการฯ)</span>
-                        </div>
-                        <RadioGroupItem value="cr_2" id="cr_2" color="destructive"></RadioGroupItem>
-                      </Label>
-                    </RadioGroup>
-                  </div>
-                  <div className="col-span-12 lg:col-span-12">
-                    <Label className="mb-3" htmlFor="inputId">อัปโหลดไฟล์ </Label>
-                    <Input type="file" variant="flat" />
+                  <div className="col-span-12">
+                    <Accordion type="single" collapsible className="w-full space-y-3.5">
+                      <AccordionItem value="item-5" className="dark:bg-slate-700">
+                        <AccordionTrigger>
+                          <div className="flex flex-col text-start text-xl">
+                            <div>5. การสร้างสรรค์ผลงาน</div>
+                            <div className="text-xs mt-1 mb-2">
+                              แสดงถึงความสามารถในการสร้างสรรค์ผลงานที่มีคุณค่า โดยใช้ทักษะด้านการจัดการความรู้ (KM) หรือการนำนวัตกรรม (Innovation)    ที่เป็นกระบวนการ มาประยุกต์ใช้ในการทำงาน ผลงานดังกล่าวต้องมีความโดดเด่น มีที่มาที่ไปชัดเจน และสะท้อนถึงความสำคัญของงาน      ต่อองค์กร รวมถึงแสดงให้เห็นถึงการใช้ความคิดสร้างสรรค์ ทักษะเฉพาะตัว และการบริหารทีมงานอย่างมีประสิทธิภาพในการขับเคลื่อนงานให้สำเร็จตามความคาดหมายในระดับสายงานหรือองค์กร
+                              นอกจากนี้ ผลงานจะต้องสามารถเชื่อมโยงไปสู่ผลลัพธ์ที่สอดคล้องกับยุทธศาสตร์ขององค์กร เป็นการดำเนินงานตามนโยบายของ   ผู้ว่าการ และส่งผลเชิงบวกต่อเป้าหมายขององค์กรในระยะยาวอย่างเป็นรูปธรรม
+                            </div>
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="grid grid-cols-12 gap-4 dark:bg-green-700">
+                            <div className="col-span-12 lg:col-span-12 dark:bg-slate-700">
+                              <Editor />
+                            </div>
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                      <AccordionItem value="item-6" className="dark:bg-slate-700">
+                        <AccordionTrigger>
+                          <div className="flex flex-col text-start text-xl">
+                            <div>6. ความทุ่มเทเสียสละการทำงานอย่างเต็มกำลัง (Engagement) ตามค่านิยม TRUSTED</div>
+                            <div className="text-xs mt-1 mb-2">
+                              การสร้างผลงานที่เป็นความคิดสร้างสรรค์สนับสนุนและส่งเสริมธุรกิจหลักและธุรกิจเกี่ยวเนื่องของ กฟภ. โดยมีคุณค่าเกิดจากกระบวนการทำงานที่สอดคล้องกับค่านิยม TRUSTED ได้แก่ Technology Savvy, Rush to Service, Under good Governance, Specialist, Teamwork, Engagement, และ Data Driven อย่างมีประสิทธิภาพและเกิดผลลัพธ์เชิงบวกที่ชัดเจน
+                            </div>
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="grid grid-cols-12 gap-4 dark:bg-green-700">
+                            <div className="col-span-12 lg:col-span-12 dark:bg-slate-700">
+                              <Editor />
+                            </div>
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
                   </div>
                 </>
               )}
               {activeStep === 2 && (
                 <>
-                  <div className="col-span-12 lg:col-span-12">
-                    <p className="text-md text-white-600 dark:text-white-600 mt-3">
-                      แนะนำบุคคลเป็นผู้ประเมิน
-                    </p>
-                  </div>
-                  <div className="col-span-12 lg:col-span-12 mb-2">
-                    <div className="relative">
-                      <span className="text-2xl text-default-400 absolute top-1/2 -translate-y-1/2 right-4 z-10" onClick={clearInput}><Icon icon="system-uicons:close" /></span>
-                      <Input type="text" id="referal_1" size="lg" placeholder="รหัสหรือชื่อพนักงาน บุคคลที่ 1" />
-                    </div>
-                  </div>
-                  <div className="col-span-12 lg:col-span-12 mb-2">
-                    <div className="relative">
-                      <span className="text-2xl text-default-400 absolute top-1/2 -translate-y-1/2 right-4 z-10" onClick={clearInput}><Icon icon="system-uicons:close" /></span>
-                      <Input type="text" id="referal_2" size="lg" placeholder="รหัสหรือชื่อพนักงาน บุคคลที่ 2" />
-                    </div>
-                  </div>
-                </>
-              )}
-              {activeStep === 3 && (
-                <>
-                  <div className="col-span-12 mt-3 mb-4">
-                    <h1 className="text-lg font-medium text-default-900">
-                      คำรับรอง
-                    </h1>
-                    <h2 className="text-md text-default-800 mt-1">
-                      ข้าพเจ้าขอรับรองว่า ข้อมูลตามใบสมัครถูกต้องตามความเป็นจริงทุกประการ และยินยอมให้ กอล. หรือหน่วยงานที่เกี่ยวข้อง ดำเนินการจัดเก็บ รวบรวม เก็บรักษา ใช้ หรือเปิดเผยข้อมูลส่วนบุคคล เพื่อใช้สำหรับโครงการคัดเลือกพนักงานและลูกจ้างดีเด่น       ประจำปี 2568 และให้เป็นไปตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 เพื่อเป็นหลักฐานแสดงความยินยอมตามหนังสือ    ฉบับนี้ ข้าพเจ้าจึงได้ลงลายมือชื่อไว้เป็นสำคัญ
-                    </h2>
+                  <div className="col-span-12">
+                    <Accordion type="single" collapsible className="w-full space-y-3.5">
+                      <AccordionItem value="item-7" className="dark:bg-slate-700">
+                        <AccordionTrigger>
+                          <div className="flex flex-col text-start text-xl">
+                            <div>7. การส่งเสริมคนทำดี มีคุณธรรม</div>
+                            <div className="text-xs mt-1 mb-2">
+                              การส่งเสริมคนทำดี มีคุณธรรม
+                            </div>
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="grid grid-cols-12 gap-4">
+                            <div className="mb-3 col-span-12 lg:col-span-12">
+                              <p className="mb-1 text-base text-default-700 font-medium">
+                                1. เป็นบุคคลที่ดำรงตนอย่างพอประมาณ ไม่โลภ ไม่เบียดเบียนผู้อื่น และ สังคม มีเหตุผล ใช้ความรู้อย่างรอบคอบและรอบด้าน
+                              </p>
+                              <Rating
+                                className="gap-x-1.5 max-w-[225px]"
+                                value={rating_1_1_1}
+                                onChange={setRating_1_1_1}
+                              />
+                            </div>
+                            <div className="mb-3 col-span-12 lg:col-span-12">
+                              <p className="mb-1 text-base text-default-700 font-medium">
+                                2. เป็นบุคคลที่ปฏิบัติตนตามกติกาจรรยาบรรณ วิชาชีพขององค์กรและสังคม เคารพกฎหมาย
+                              </p>
+                              <Rating
+                                className="gap-x-1.5 max-w-[225px]"
+                                value={rating_1_1_2}
+                                onChange={setRating_1_1_2}
+                              />
+                            </div>
+                            <div className="mb-3 col-span-12 lg:col-span-12">
+                              <p className="mb-1 text-base text-default-700  font-medium">
+                                3. เป็นบุคคลที่มีความซื่อสัตย์ ซื่อตรง ยึดมั่น ยืนหยัดในการรักษาความจริง ความถูกต้องและเป็นธรรม ไม่สนับสนุน ไม่ร่วมมือ ไม่ยินยอมพร้อมต่อต้านการทุจริตทุกรูปแบบ
+                              </p>
+                              <Rating
+                                className="gap-x-1.5 max-w-[225px]"
+                                value={rating_1_1_3}
+                                onChange={setRating_1_1_3}
+                              />
+                            </div>
+                            <div className="mb-3 col-span-12 lg:col-span-12">
+                              <p className="mb-1 text-base text-default-700  font-medium">
+                              4. เป็นบุคคลที่ให้และเสียสละประโยชน์ส่วนตนเพื่อประโยชน์ส่วนรวมเป็นสำคัญ มีจิตสาธารณะ
+                              </p>
+                              <Rating
+                                className="gap-x-1.5 max-w-[225px]"
+                                value={rating_1_1_3}
+                                onChange={setRating_1_1_3}
+                              />
+                            </div>
+                            <div className="mb-3 col-span-12 lg:col-span-12">
+                              <p className="mb-1 text-base text-default-700  font-medium">
+                              5. เป็นบุคคลที่สำนึกรู้คุณและแสดงออกถึงความจงรักภักดีต่อ ชาติ ศาสนา พระมหากษัตริย์ องค์กร และ กตัญญูต่อผู้มีพระคุณ
+                              </p>
+                              <Rating
+                                className="gap-x-1.5 max-w-[225px]"
+                                value={rating_1_1_3}
+                                onChange={setRating_1_1_3}
+                              />
+                            </div>
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
                   </div>
                 </>
               )}
@@ -557,7 +623,7 @@ const BasicWizard = () => {
                     handleNext();
                   }}
                 >
-                  ยืนยันการสมัคร
+                  ส่งแบบประเมิน
                 </Button>
               ) : (
                 <Button

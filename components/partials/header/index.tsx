@@ -19,7 +19,9 @@ import FullScreen from "./full-screen";
 const NavTools = ({ isDesktop, isMobile, sidebarType }: { isDesktop: boolean; isMobile: boolean; sidebarType: string }) => {
   return (
     <div className="nav-tools flex items-center  gap-2">
+      {/*
       {isDesktop && <Language />}
+       */}
       {isDesktop && <FullScreen />}
 
       <ThemeButton />

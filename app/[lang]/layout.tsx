@@ -10,6 +10,10 @@ import "flatpickr/dist/themes/light.css";
 import DirectionProvider from "@/provider/direction.provider";
 const inter = Inter({ subsets: ["latin"] });
 
+import 'react-quill/dist/quill.snow.css'; // For Quill snow theme
+import 'react-quill/dist/quill.bubble.css'; // For Quill bubble theme (optional)
+
+
 export const metadata = {
   title: {
     default: siteConfig.name,

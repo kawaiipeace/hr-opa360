@@ -2,13 +2,13 @@
 
 
 export const siteConfig = {
-  name: "DashTail Next js Admin Template",
+  name: "ระบบประเมินพนักงานดีเด่น 360 (OPA-360)",
   description: null,
   theme: "violet",
   layout: "vertical",
   // semi-box, horizontal, vertical
   hideSideBar: false,
-  sidebarType: "module",
+  sidebarType: "popover",
   // popover, classic, module
   sidebarColor: null,
   navbarType: "sticky",

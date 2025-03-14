@@ -35,24 +35,28 @@ const BasicWizard = () => {
     mobilePhone: '',
     email: '',
     lineId: '',
+    entry_date: '',
+    work_count: '',
   });
   const shouldShowSummary = inputValue && employeeData.firstName !== '';
 
   // Mock function to simulate fetching employee data based on input value
   const mockEmployeeData = (input: React.SetStateAction<string>) => {
-    if (input === '123') {
+    if (input === '505291') {
       setEmployeeData({
-        prefix: 'Mr.',
-        firstName: 'John',
-        lastName: 'Doe',
-        employeeId: '123',
-        position: 'Engineer',
-        departmentShort: 'ENG',
-        departmentFull: 'Engineering Department',
-        workPhone: '02-123-4567',
-        mobilePhone: '089-123-4567',
-        email: 'john.doe@company.com',
-        lineId: 'john.doe.line',
+        prefix: 'นาย',
+        firstName: 'ศรัญยู',
+        lastName: 'บริรัตน์ฤทธิ์',
+        employeeId: '505291',
+        position: 'นรค.6',
+        departmentShort: 'กอพ.1 ฝพจ.',
+        departmentFull: 'กองออกแบบและพัฒนาดิจิทัล 1 ฝ่ายพัฒนาดิจิทัล',
+        workPhone: '6892',
+        mobilePhone: '',
+        email: 'sarunyoo.bor@pea.co.th',
+        lineId: '',
+        entry_date: '01/12/2559',
+        work_count: '8',
       });
     } else if (input === '456') {
       setEmployeeData({
@@ -67,6 +71,8 @@ const BasicWizard = () => {
         mobilePhone: '089-765-4321',
         email: 'jane.smith@company.com',
         lineId: 'jane.smith.line',
+        entry_date: '01/12/2559',
+        work_count: '8',
       });
     } else {
       setEmployeeData({
@@ -81,6 +87,8 @@ const BasicWizard = () => {
         mobilePhone: '',
         email: '',
         lineId: '',
+        entry_date: '',
+        work_count: '',
       });
     }
   };
@@ -143,19 +151,19 @@ const BasicWizard = () => {
 
       {activeStep === steps.length ? (
         <React.Fragment>
-          <div className="mt-2 mb-2 font-semibold text-center">
-            All steps completed - you&apos;re finished
+          <div className="mt-3 mb-2 font-semibold text-center">
+            การสมัครเสร็จสิ้น ขอให้โชคดี!!!
           </div>
           <div className="flex pt-2">
             <div className=" flex-1" />
             <Button
               size="xs"
               variant="outline"
-              color="destructive"
+              color="success"
               className="cursor-pointer"
               onClick={handleReset}
             >
-              Reset
+              เสร็จสิ้น
             </Button>
           </div>
         </React.Fragment>
@@ -231,7 +239,7 @@ const BasicWizard = () => {
                         </div>
                         <div className="col-span-12 lg:col-span-6">
                           <Label className="mb-3" htmlFor="lineId">Line ID </Label>
-                          <Input type="text" id="lineId" value={employeeData.lineId}/>
+                          <Input type="text" id="lineId" value={employeeData.lineId} />
                         </div>
                       </div>
                     </div>
@@ -243,11 +251,11 @@ const BasicWizard = () => {
                 <>
                   <div className="col-span-12 lg:col-span-6">
                     <Label className="mb-3" htmlFor="inputId">วันที่ได้รับการบรรจุ</Label>
-                    <Input type="text" id="inputId" readOnly />
+                    <Input type="text" id="inputId" value={employeeData.entry_date} readOnly />
                   </div>
                   <div className="col-span-12 lg:col-span-6">
                     <Label className="mb-3" htmlFor="inputId">อายุงาน (ปี) </Label>
-                    <Input type="text" id="inputId" readOnly />
+                    <Input type="text" id="inputId" value={employeeData.work_count} readOnly />
                   </div>
                   <div className="col-span-12 lg:col-span-12">
                     <p className="text-md text-white-600 dark:text-white-600 mt-3">
@@ -288,7 +296,15 @@ const BasicWizard = () => {
                     </RadioGroup>
                   </div>
                   <div className="col-span-12 lg:col-span-12">
-                    <Label className="mb-3" htmlFor="inputId">อัปโหลดไฟล์ </Label>
+                    <p className="text-md text-white-600 dark:text-white-600 mt-3">
+                      นำเสนอผลงานในอดีตหรือปัจจุบัน และผลงานที่ภาคภูมิใจ เพื่อนำเสนอเป็นพนักงานและลูกจ้างดีเด่น ที่สามารถอธิบายที่มาที่ไป และความสำคัญได้อย่างชัดเจน โดยให้สอดคล้องกับเกณฑ์ส่วนที่ 2 การสร้างสรรค์ผลงาน มีการใช้ทักษะและความสามารถด้าน    การจัดการความรู้ (KM) หรือนวัตกรรม (Innovation) ที่เป็นกระบวนการที่นำไปสู่การสร้างผลงานที่มีคุณค่า และสอดคล้องกับค่านิยม TRUSTED ซึ่งประกอบด้วย Technology Savvy, Rush to Service, Under good Governance, Specialist, Teamwork, Engagement และ Data Driven
+                    </p>
+                    <p className="text-md text-white-600 dark:text-white-600 mt-1">
+                      เขียนเรียงความ โดยใช้แบบอักษร TH Sarabun ขนาดอักษร 16 จำนวนไม่เกิน 1 หน้ากระดาษ A4
+                    </p>
+                  </div>
+                  <div className="col-span-12 lg:col-span-12">
+                    <Label className="mb-3" htmlFor="inputId">อัปโหลดไฟล์ (รองรับ .docx, .doc, .pdf)</Label>
                     <Input type="file" variant="flat" />
                   </div>
                 </>
