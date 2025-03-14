@@ -1,0 +1,36 @@
+FROM postgres:17
+
+LABEL author="Peace"
+LABEL description="opa360"
+LABEL version="1.0"
+
+ENV POSTGRES_PASSWORD=123456
+ENV POSTGRES_DB=opa360
+
+RUN localedef -i th_TH -c -f UTF-8 -A /usr/share/locale/locale.alias th_TH.UTF-8
+ENV LANG=th_TH.utf8
+ENV USE_PGXS=1
+
+RUN apt-get update && \
+    apt-get install -y postgresql-server-dev-17 postgresql-17-cron make gcc git curl libkrb5-dev && \
+    apt-get clean
+
+RUN git clone --branch main https://github.com/pgaudit/pgaudit.git /tmp/pgaudit && \
+    cd /tmp/pgaudit && \
+    make && \
+    make install && \
+    rm -rf /tmp/pgaudit
+
+RUN echo "shared_preload_libraries = 'pgaudit'" >> /usr/share/postgresql/postgresql.conf.sample
+
+RUN echo "shared_preload_libraries = 'pg_cron'" >> /var/lib/postgresql/data/postgresql.conf
+
+# TO BUILD AND RUN DOCKER
+# docker build -f dockerfile.postgresql -t opa360-db .
+# docker run -d --name opa360-db -p 5001:5432 --restart=always opa360-db
+
+# TO DUMP (EXPORT) SQL
+# docker exec vms-fcms-db pg_dump -h localhost -U postgres vms_plus > vms_fcms.sql
+
+# TO RESTORE SQL
+# docker exec vms-fcms-db pg_restore -h "localhost" -U postgres -d vms_plus ./backups/vms_plus_29012025.backup
