@@ -5,7 +5,7 @@ export const siteConfig = {
   name: "ระบบประเมินพนักงานดีเด่น 360 (OPA-360)",
   description: null,
   theme: "violet",
-  layout: "vertical",
+  layout: "semi-box",
   // semi-box, horizontal, vertical
   hideSideBar: false,
   sidebarType: "popover",

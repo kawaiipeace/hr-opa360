@@ -9,8 +9,6 @@ export interface MenuItemProps {
   multi_menu? : MenuItemProps[]
   nested?: MenuItemProps[]
   onClick: () => void;
-
-  
 }
 
 export const menusConfig = {
