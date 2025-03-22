@@ -7,7 +7,9 @@ import * as MenubarPrimitive from "@radix-ui/react-menubar"
 
 import { cn } from "@/lib/utils"
 
-const MenubarMenu = MenubarPrimitive.Menu
+const MenubarMenu = MenubarPrimitive.Menu as React.FC<
+  React.ComponentProps<typeof MenubarPrimitive.Menu>
+>
 
 const MenubarGroup = MenubarPrimitive.Group
 
