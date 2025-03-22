@@ -16,14 +16,29 @@ import { useMediaQuery } from "@/hooks/use-media-query";
 import MenuOverlayPortal from "./MenuOverlayPortal";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LucideIcon } from 'lucide-react';
+
+export interface ModernMenuItem {
+  title: string;
+  icon?: LucideIcon;
+  href?: string;
+  child?: ModernMenuItem[];
+  nested?: ModernMenuItem[];
+}
+
+export interface ModernMenuConfig {
+  sidebarNav: {
+    modern: ModernMenuItem[];
+  };
+}
 
 const ModuleSidebar = ({ trans }: { trans: any }) => {
-  const menus = menusConfig?.sidebarNav?.modern || [];
+  const menus = (menusConfig as ModernMenuConfig)?.sidebarNav?.modern || [];
   const { subMenu, setSubmenu, collapsed, setCollapsed, sidebarBg } =
     useSidebar();
   const { isRtl } = useThemeStore();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [currentSubMenu, setCurrentSubMenu] = useState<any[]>([]);
+  const [currentSubMenu, setCurrentSubMenu] = useState<ModernMenuItem[]>([]);
   const [nestedIndex, setNestedIndex] = useState<number | null>(null);
   const [multiNestedIndex, setMultiNestedIndex] = useState<number | null>(null);
   // mobile menu overlay

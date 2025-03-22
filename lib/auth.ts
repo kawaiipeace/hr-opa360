@@ -1,6 +1,6 @@
 import Credentials from "next-auth/providers/credentials";
 
-import {User as UserType, user} from "@/app/api/user/data";
+// import {User as UserType, user} from "@/app/api/user/data";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 
@@ -8,6 +8,9 @@ import avatar3 from "@/public/images/avatar/avatar-3.jpg";
 
 
 export const authOptions = {
+  // Configure one or more authentication providers [NextAuth with Keycloak]
+
+  /*
   providers: [
     GoogleProvider({
       clientId: process.env.AUTH_GOOGLE_ID as string,
@@ -51,6 +54,7 @@ export const authOptions = {
       
     }),
   ],
+  */
   secret: process.env.AUTH_SECRET,
 
   session: {

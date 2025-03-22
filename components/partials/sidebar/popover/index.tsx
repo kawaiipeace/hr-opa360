@@ -13,11 +13,28 @@ import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { usePathname } from "next/navigation";
 import AddBlock from "../common/add-block";
+import { LucideIcon } from 'lucide-react';
+
+export interface MenuItem {
+  title: string;
+  icon?: LucideIcon;
+  href?: string;
+  isHeader?: boolean;
+  child?: MenuItem[];
+  multi_menu?: MenuItem[];
+}
+
+export interface SidebarConfig {
+  sidebarNav: {
+    classic: MenuItem[];
+  };
+}
 
 const PopoverSidebar = ({ trans }: { trans: string }) => {
   const { collapsed, sidebarBg } = useSidebar();
   const { layout, isRtl } = useThemeStore();
-  const menus = menusConfig?.sidebarNav?.classic || [];
+  const menus = (menusConfig as SidebarConfig)?.sidebarNav?.classic || [];
+
   const [activeSubmenu, setActiveSubmenu] = useState<number | null>(null);
   const [activeMultiMenu, setMultiMenu] = useState<number | null>(null);
 
@@ -94,7 +111,7 @@ const PopoverSidebar = ({ trans }: { trans: string }) => {
             " space-y-2 text-center": collapsed,
           })}
         >
-          {menus.map((item, i) => (
+          {menus.map((item: MenuItem, i: number) => (
             <li key={`menu_key_${i}`}>
               {/* single menu  */}
 

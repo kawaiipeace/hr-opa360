@@ -11,11 +11,29 @@ import { usePathname } from "next/navigation";
 import SingleMenuItem from "./single-menu-item";
 import SubMenuHandler from "./sub-menu-handler";
 import NestedSubMenu from "../common/nested-menus";
+import { LucideIcon } from 'lucide-react';
+
+export interface MenuItem {
+  title: string;
+  icon?: LucideIcon;
+  href?: string;
+  isHeader?: boolean;
+  child?: MenuItem[];
+  multi_menu?: MenuItem[];
+}
+
+export interface SidebarConfig {
+  sidebarNav: {
+    classic: MenuItem[];
+  };
+}
+
 const MobileSidebar = ({ className, trans }: { className?: string, trans: any }) => {
   const { sidebarBg, mobileMenu, setMobileMenu } = useSidebar();
   const [activeSubmenu, setActiveSubmenu] = useState<number | null>(null);
   const [activeMultiMenu, setMultiMenu] = useState<number | null>(null);
-  const menus = menusConfig?.sidebarNav?.classic || [];
+  const menus = (menusConfig as SidebarConfig)?.sidebarNav?.classic || [];
+
   const { collapsed } = useSidebar();
 
   const toggleSubmenu = (i: number) => {
@@ -90,7 +108,7 @@ const MobileSidebar = ({ className, trans }: { className?: string, trans: any })
               " space-y-2 text-center": collapsed,
             })}
           >
-            {menus.map((item, i) => (
+            {menus.map((item: MenuItem, i: number) => (
               <li key={`menu_key_${i}`}>
                 {/* single menu  */}
 

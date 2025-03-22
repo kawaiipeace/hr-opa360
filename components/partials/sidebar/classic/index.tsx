@@ -12,11 +12,30 @@ import SingleMenuItem from "./single-menu-item";
 import SubMenuHandler from "./sub-menu-handler";
 import NestedSubMenu from "../common/nested-menus";
 import AddBlock from "../common/add-block";
+import { LucideIcon } from 'lucide-react';
+
+export interface MenuItem {
+  title: string;
+  icon?: LucideIcon;
+  href?: string;
+  isHeader?: boolean;
+  child?: MenuItem[];
+  multi_menu?: MenuItem[];
+}
+
+export interface SidebarConfig {
+  sidebarNav: {
+    classic: MenuItem[];
+  };
+}
+
 const ClassicSidebar = ({ trans }: { trans: string }) => {
   const { sidebarBg } = useSidebar();
   const [activeSubmenu, setActiveSubmenu] = useState<number | null>(null);
   const [activeMultiMenu, setMultiMenu] = useState<number | null>(null);
-  const menus = menusConfig?.sidebarNav?.classic || [];
+  const menus = (menusConfig as SidebarConfig)?.sidebarNav?.classic || [];
+  
+
   const { collapsed, setCollapsed } = useSidebar();
   const { isRtl } = useThemeStore();
   const [hovered, setHovered] = useState<boolean>(false);
@@ -98,7 +117,7 @@ const ClassicSidebar = ({ trans }: { trans: string }) => {
             "text-start": collapsed && hovered,
           })}
         >
-          {menus.map((item, i) => (
+          {menus.map((item: MenuItem, i: number) => (
             <li key={`menu_key_${i}`}>
               {/* single menu  */}
 

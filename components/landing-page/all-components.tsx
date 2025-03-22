@@ -4,11 +4,32 @@ import { menusConfig } from "@/config/menus";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from 'swiper/modules';
+import { LucideIcon } from 'lucide-react'
+
+export interface MenuItem {
+  title: string;
+  href?: string;
+  icon?: LucideIcon;
+  nested?: MenuItem[];
+}
+
+export interface MenuChild {
+  title: string;
+  child?: {
+    nested?: MenuItem[];
+  }[];
+}
+
+export interface MenuConfig {
+  sidebarNav: {
+    modern: MenuChild[];
+  };
+}
 const AllComponents = () => {
+  const menuConfig = menusConfig as MenuConfig;
+  const menus = menuConfig.sidebarNav?.modern[2]?.child?.[0]?.nested || [];
+  const menus2 = menuConfig.sidebarNav?.modern[2]?.child?.[1]?.nested || [];
 
-
-  const menus = menusConfig.sidebarNav.modern[2]?.child?.[0]?.nested ?? [];
-  const menus2 = menusConfig.sidebarNav.modern[2]?.child?.[1]?.nested ?? [];
   const data = [...menus, ...menus2];
   return (
     <section className="py-16 2xl:py-20  relative " id="features">
