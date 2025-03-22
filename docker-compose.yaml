@@ -1,0 +1,22 @@
+services:
+  frontend:
+    build:
+      dockerfile: dockerfile.local
+    container_name: opa360-frontend
+    restart: always
+    env_file:
+      - .env.local
+    environment:
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL}
+    ports:
+      - "3000:3000"
+    networks:
+      opa360-network:
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  opa360-network:
+    driver: bridge
